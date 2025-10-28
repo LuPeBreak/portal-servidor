@@ -5,14 +5,18 @@
 ```mermaid
 graph TD
   A[Navegador do Usuário] --> B[React Frontend Application]
-  B --> C[Arquivo JSON de Configuração]
+  B --> C[TypeScript Data Configuration]
   B --> D[Componentes ShadCN/UI]
   B --> E[Ícones Lucide React]
+  B --> F[Sistema de Busca Fuzzy]
+  B --> G[Hooks Customizados]
   
   subgraph "Frontend Layer"
     B
     D
     E
+    F
+    G
   end
   
   subgraph "Data Layer"
@@ -20,29 +24,69 @@ graph TD
   end
   
   subgraph "Build Tools"
-    F[Vite]
-    G[Tailwind CSS]
+    H[Vite]
+    I[Tailwind CSS]
+    J[Biome Linter]
   end
   
-  B --> F
-  B --> G
+  B --> H
+  B --> I
+  B --> J
 ```
 
 ## 2. Technology Description
 
-- **Frontend**: React@18 + TypeScript + Vite@5
-- **UI Framework**: ShadCN/UI + Tailwind CSS@3
-- **Ícones**: Lucide React
-- **Build Tool**: Vite
-- **Styling**: Tailwind CSS com configuração customizada
-- **Storage**: localStorage (for theme preferences, future favorites)
-- **Deployment**: Build estático para hospedagem web
+* **Frontend**: React\@19 + TypeScript + Vite\@5
+
+* **UI Framework**: ShadCN/UI + Tailwind CSS\@4
+
+* **Ícones**: Lucide React
+
+* **Build Tool**: Vite
+
+* **Styling**: Tailwind CSS com configuração customizada
+
+* **Linting**: Biome (formatação e linting de código)
+
+* **Storage**: localStorage (for theme preferences)
+
+* **Data Management**: TypeScript configuration file (portal-links.ts)
+
+* **Search Engine**: Custom fuzzy search with 5-level priority system
+
+* **Deployment**: Build estático para hospedagem web
+
+### 2.1 Code Quality & Linting
+
+O projeto utiliza **Biome** como ferramenta principal para linting e formatação de código:
+
+* **Configuração**: `biome.json` com regras específicas para TypeScript/React
+
+* **Comando de lint**: `pnpm lint` (executa `biome check --write ./src`)
+
+* **Formatação automática**: Biome aplica formatação automática durante o lint
+
+* **Integração com Git**: VCS habilitado para ignorar arquivos do .gitignore
+
+* **Suporte CSS**: Parser configurado para Tailwind CSS directives
+
+**Regras importantes:**
+
+* Indentação: Tabs
+
+* Aspas: Duplas para JavaScript/TypeScript
+
+* Formatação automática aplicada em todos os arquivos
+
+* Verificação de variáveis não utilizadas
+
+* Validação de imports e exports
 
 ## 3. Route definitions
 
-| Route | Purpose |
-|-------|---------|
-| / | Página principal do portal com todas as categorias e links organizados |
+| Route | Purpose                                                                |
+| ----- | ---------------------------------------------------------------------- |
+| /     | Página principal do portal com todas as categorias e links organizados |
 
 ## 4. API definitions
 
@@ -83,169 +127,136 @@ erDiagram
 
 ### 6.2 Data Definition Language
 
-**Estrutura do arquivo JSON de configuração (portal-config.json)**
-
-```json
-{
-  "siteInfo": {
-    "title": "Portal do Servidor",
-    "subtitle": "Prefeitura Municipal de Barra Mansa",
-    "logo": "/logo-prefeitura.png"
-  },
-  "categories": {
-    "management": {
-      "name": "Sistemas de Gestão Pública",
-      "description": "Acesso aos principais sistemas administrativos da prefeitura",
-      "priority": 1,
-      "links": [
-        {
-          "title": "Protocolo",
-          "description": "Sistema de protocolo de documentos",
-          "url": "https://protocolo.barramansa.rj.gov.br",
-          "icon": "FileText",
-          "isNew": false,
-          "priority": 1
-        },
-        {
-          "title": "Administrativo",
-          "description": "Gestão administrativa e processos",
-          "url": "https://admin.barramansa.rj.gov.br",
-          "icon": "Settings",
-          "isNew": false,
-          "priority": 2
-        },
-        {
-          "title": "Contábil",
-          "description": "Sistema de gestão contábil",
-          "url": "https://contabil.barramansa.rj.gov.br",
-          "icon": "Calculator",
-          "isNew": false,
-          "priority": 3
-        }
-      ]
-    },
-    "utilities": {
-      "name": "Utilidades",
-      "description": "Ferramentas e recursos úteis para o dia a dia",
-      "priority": 2,
-      "links": [
-        {
-          "title": "WEBMAIL",
-          "description": "Sistema de email corporativo",
-          "url": "https://webmail.barramansa.rj.gov.br",
-          "icon": "Mail",
-          "isNew": false,
-          "priority": 1
-        },
-        {
-          "title": "Portal da Transparência",
-          "description": "Informações públicas e transparência",
-          "url": "https://transparencia.barramansa.rj.gov.br",
-          "icon": "Globe",
-          "isNew": false,
-          "priority": 2
-        },
-        {
-          "title": "Contracheque Online",
-          "description": "Consulta de contracheque online",
-          "url": "https://contracheque.barramansa.rj.gov.br",
-          "icon": "FileText",
-          "isNew": false,
-          "priority": 3
-        },
-        {
-          "title": "Pedido de Toner",
-          "description": "Formulário para solicitação de toner",
-          "url": "https://forms.google.com/toner-request",
-          "icon": "Printer",
-          "isNew": true,
-          "priority": 4
-        }
-      ]
-    },
-    "support": {
-      "name": "Suporte TI",
-      "description": "Central de ajuda e suporte técnico",
-      "priority": 3,
-      "links": [
-        {
-          "title": "Suporte TI",
-          "description": "Central de suporte técnico",
-          "url": "https://suporte.barramansa.rj.gov.br",
-          "icon": "HelpCircle",
-          "isNew": false,
-          "priority": 1
-        },
-        {
-          "title": "Criação de Usuário",
-          "description": "Solicitação de criação de usuário",
-          "url": "https://suporte.barramansa.rj.gov.br/usuario",
-          "icon": "UserPlus",
-          "isNew": false,
-          "priority": 2
-        },
-        {
-          "title": "Criação de Email",
-          "description": "Solicitação de criação de email",
-          "url": "https://suporte.barramansa.rj.gov.br/email",
-          "icon": "Mail",
-          "isNew": false,
-          "priority": 3
-        }
-      ]
-    }
-  },
-  "footer": {
-    "municipality": "Município de Barra Mansa",
-    "cnpj": "28.695.658/0001-84",
-    "phone": "(24) 2106-3400",
-    "email": "ouvidoria@barramansa.rj.gov.br",
-    "address": "Rua Luiz Ponce, 263 - Centro, Barra Mansa - RJ, 27310-400",
-    "credits": "Desenvolvido pela equipe de TI da Prefeitura",
-    "copyright": "Copyright 2024 | Todos os Direitos Reservados | Prefeitura Municipal de Barra Mansa"
-  }
-}
-```
-
-**Estrutura de Componentes React**
+**Estrutura do arquivo TypeScript de configuração (portal-links.ts)**
 
 ```typescript
+import { LucideIcon } from "lucide-react";
+
 // Tipos TypeScript para o projeto
 interface LinkItem {
   title: string;
   description: string;
   url: string;
-  icon: string;
-  isNew?: boolean;
-  priority?: number;
+  icon: LucideIcon;
+  keywords: string[];
 }
 
 interface Category {
   name: string;
   description: string;
-  priority?: number;
   links: LinkItem[];
 }
 
-interface SiteInfo {
-  title: string;
-  subtitle: string;
-  logo: string;
-}
-
-interface FooterInfo {
-  municipality: string;
-  cnpj: string;
-  phone: string;
-  email: string;
-  address: string;
-  credits: string;
-  copyright: string;
-}
-
 interface PortalConfig {
-  siteInfo: SiteInfo;
-  categories: Record<string, Category>;
-  footer: FooterInfo;
+  management: Category;
+  utilities: Category;
+  support: Category;
 }
+
+// Exemplo da estrutura de dados atual
+export const portalConfig: PortalConfig = {
+  management: {
+    name: "Sistemas de Gestão Pública",
+    description: "Sistemas para gestão administrativa e operacional",
+    links: [
+      {
+        title: "Sistema Administrativo",
+        description: "Gestão de processos administrativos, documentos e tramitações internas da prefeitura",
+        url: "https://admin.barramansa.rj.gov.br",
+        icon: Building2,
+        keywords: [
+          "administrativo", "admin", "administracao", "gestao", "gerencia",
+          "processos", "documentos", "tramitacao", "tramitacoes", "interno",
+          "prefeitura", "municipal", "orgao", "secretaria", "departamento"
+        ]
+      }
+      // ... mais links
+    ]
+  },
+  utilities: {
+    name: "Utilidades",
+    description: "Ferramentas e serviços úteis para o dia a dia",
+    links: [
+      // ... links de utilidades
+    ]
+  },
+  support: {
+    name: "Suporte TI",
+    description: "Suporte técnico e solicitações especializadas",
+    links: [
+      // ... links de suporte
+    ]
+  }
+};
 ```
+
+## 7. Sistema de Busca Fuzzy
+
+### 7.1 Arquitetura do Sistema de Busca
+
+```mermaid
+graph TD
+  A[Input do Usuário] --> B[useSearch Hook]
+  B --> C[Normalização do Termo]
+  C --> D[Busca por Prioridades]
+  
+  subgraph "Níveis de Prioridade"
+    E[1. Título do Link - 600pts]
+    F[2. Descrição do Link - 500pts]
+    G[3. Keywords do Link - 400pts]
+    H[4. Nome da Categoria - 300pts]
+    I[5. Descrição da Categoria - 200pts]
+  end
+  
+  D --> E
+  D --> F
+  D --> G
+  D --> H
+  D --> I
+  
+  E --> J[Cálculo de Score]
+  F --> J
+  G --> J
+  H --> J
+  I --> J
+  
+  J --> K[Ordenação por Relevância]
+  K --> L[Resultados Filtrados]
+```
+
+### 7.2 Sistema de Pontuação
+
+**Tipos de Correspondência:**
+
+* **Correspondência exata**: 100 pontos
+
+* **Começa com o termo**: 90 pontos
+
+* **Contém o termo**: 70 pontos
+
+* **Correspondência parcial**: 30 pontos por palavra
+
+**Multiplicadores de Prioridade:**
+
+* Título do Link: 6x (600+ pontos)
+
+* Descrição do Link: 5x (500+ pontos)
+
+* Keywords do Link: 4x (400+ pontos)
+
+* Nome da Categoria: 3x (300+ pontos)
+
+* Descrição da Categoria: 2x (200+ pontos)
+
+### 7.3 Funcionalidades Avançadas
+
+* **Busca sem acentos**: Normalização automática de caracteres especiais
+
+* **Tolerância a erros**: Keywords expandidas com variações comuns
+
+* **Priorização inteligente**: Links específicos têm prioridade sobre categorias
+
+* **Busca em tempo real**: Resultados instantâneos conforme digitação
+
+* **Fallback inteligente**: Se não encontrar links específicos, mostra categoria completa
+

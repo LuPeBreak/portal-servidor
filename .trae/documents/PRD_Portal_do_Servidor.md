@@ -27,25 +27,34 @@ Nosso portal consiste nas seguintes páginas principais:
 
 | Page Name | Module Name | Feature description |
 |-----------|-------------|---------------------|
-| Home page | Header | Display municipal logo, portal title, theme toggle (light/dark mode), search bar for real-time link filtering |
-| Home page | Categories Section | Display organized link categories (Management Systems, Utilities, IT Support) with responsive card layout |
-| Home page | Link Cards | Interactive cards with system icons, titles, descriptions, hover effects, tooltips, and accessibility features |
+| Home page | Header | Display municipal logo, portal title, theme toggle (light/dark mode) |
+| Home page | Search Bar | Advanced fuzzy search with 5-level priority system, real-time filtering, accent-insensitive search, typo tolerance |
+| Home page | Categories Section | Display organized link categories (Sistemas de Gestão Pública, Utilidades, Suporte TI) with responsive card layout |
+| Home page | Link Cards | Interactive cards with system icons, titles, descriptions, hover effects, tooltips, accessibility features, and extensive keywords |
 | Home page | Footer | Municipal information, contact details, development credits |
-| Página Principal | Animações | Implementar animações suaves de hover, carregamento e transições |
+| Home page | Search System | Intelligent priority-based search: Link title > Link description > Link keywords > Category name > Category description |
 
 ## 3. Core Process
 
 **Fluxo Principal do Usuário:**
 1. Servidor acessa o portal via URL
-2. Visualiza as categorias organizadas de sistemas
-3. Localiza o sistema desejado através da navegação visual ou busca
-4. Clica no card do sistema para ser redirecionado
-5. Sistema abre em nova aba mantendo o portal disponível
+2. Visualiza as categorias organizadas de sistemas (Sistemas de Gestão Pública, Utilidades, Suporte TI)
+3. Localiza o sistema desejado através da navegação visual ou busca fuzzy inteligente
+4. Utiliza busca com tolerância a erros de digitação e acentos
+5. Clica no card do sistema para ser redirecionado
+6. Sistema abre em nova aba mantendo o portal disponível
+
+**Fluxo de Busca Avançada:**
+1. Usuário digita termo de busca (com ou sem acentos)
+2. Sistema aplica busca fuzzy com 5 níveis de prioridade
+3. Resultados são ordenados por relevância
+4. Links específicos têm prioridade sobre categorias
+5. Se não encontrar links específicos, mostra categoria completa
 
 **Fluxo de Administração:**
-1. Administrador TI acessa o arquivo JSON de configuração
-2. Adiciona, edita ou remove links e categorias
-3. Salva as alterações
+1. Administrador TI acessa o arquivo TypeScript de configuração (portal-links.ts)
+2. Adiciona, edita ou remove links, categorias e keywords
+3. Salva as alterações com tipagem TypeScript
 4. Portal é automaticamente atualizado na próxima visualização
 
 ```mermaid
@@ -105,9 +114,9 @@ O portal seguirá o design system da Prefeitura de Barra Mansa com as seguintes 
 
 | Page Name | Module Name | UI Elements |
 |-----------|-------------|-------------|
-| Página Principal | Header | Logo da prefeitura (esquerda), título "Portal do Servidor" (centro), toggle tema e busca (direita) |
-| Página Principal | Busca | Campo de busca com ícone, placeholder "Buscar sistemas...", filtro em tempo real |
-| Página Principal | Cards de Links | Grid responsivo, cards com hover effects, tooltips, ícones Lucide, acessibilidade completa |
+| Página Principal | Header | Logo da prefeitura (esquerda), título "Portal do Servidor" (centro), toggle tema (direita) |
+| Página Principal | Busca | Campo de busca fuzzy com ícone, placeholder "Buscar sistemas...", filtro em tempo real com 5 níveis de prioridade |
+| Página Principal | Cards de Links | Grid responsivo, cards com hover effects, tooltips, ícones Lucide, keywords expandidas, acessibilidade completa |
 | Página Principal | Footer | Informações municipais, contato, créditos da equipe TI |
 
 ### 4.3 Responsiveness

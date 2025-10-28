@@ -1,73 +1,215 @@
-# React + TypeScript + Vite
+# Portal do Servidor - Prefeitura Municipal de Barra Mansa
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portal web moderno e responsivo para acesso aos sistemas municipais da Prefeitura de Barra Mansa, desenvolvido com React, TypeScript e Vite.
 
-Currently, two official plugins are available:
+## 🚀 Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### ✨ Interface Moderna
+- Design responsivo e acessível
+- Tema claro/escuro com persistência
+- Interface intuitiva e fácil navegação
+- Componentes reutilizáveis com shadcn/ui
 
-## React Compiler
+### 🔍 Sistema de Busca Inteligente
+- **Busca Fuzzy com Prioridades**: Sistema avançado de busca que encontra resultados mesmo com termos parciais
+- **Ordem de Prioridade de Busca**:
+  1. **Título do Link** (prioridade máxima)
+  2. **Descrição do Link**
+  3. **Keywords do Link**
+  4. **Título da Categoria**
+  5. **Descrição da Categoria**
+  6. **Keywords da Categoria** (prioridade mínima)
+- **Busca Inteligente**: Quando uma categoria corresponde à busca, mostra todos os links da categoria
+- **Ranking por Relevância**: Resultados ordenados por score de similaridade
+- **Busca em Tempo Real**: Resultados instantâneos conforme você digita
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 📂 Organização por Categorias
+- **Sistemas de Gestão Pública**: Acesso aos principais sistemas administrativos
+- **Utilidades**: Ferramentas e serviços úteis para o dia a dia
+- **Suporte TI**: Suporte técnico e solicitações de TI
 
-## Expanding the ESLint configuration
+### 🎯 Características Técnicas
+- **TypeScript**: Tipagem forte para maior confiabilidade
+- **Estrutura de Dados Flexível**: Sistema baseado em chaves nomeadas para fácil manutenção
+- **Keywords Personalizadas**: Cada link e categoria possui keywords para melhorar a busca
+- **Performance Otimizada**: Hooks customizados e memoização para melhor performance
+- **Linting Rigoroso**: Biome para formatação e qualidade de código
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Tecnologias Utilizadas
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **React 18** - Biblioteca para interfaces de usuário
+- **TypeScript** - Superset do JavaScript com tipagem estática
+- **Vite** - Build tool moderna e rápida
+- **Tailwind CSS** - Framework CSS utilitário
+- **shadcn/ui** - Componentes de UI modernos e acessíveis
+- **Lucide React** - Ícones SVG otimizados
+- **Biome** - Linter e formatador de código
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📦 Instalação e Execução
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Pré-requisitos
+- Node.js 18+ 
+- npm ou pnpm
+
+### Instalação
+```bash
+# Clone o repositório
+git clone [url-do-repositorio]
+
+# Entre no diretório
+cd portal-servidor
+
+# Instale as dependências
+npm install
+# ou
+pnpm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Execução
+```bash
+# Desenvolvimento
+npm run dev
+# ou
+pnpm dev
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+# Build para produção
+npm run build
+# ou
+pnpm build
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Preview da build
+npm run preview
+# ou
+pnpm preview
 ```
+
+### Scripts Disponíveis
+```bash
+# Verificação completa (lint + type-check)
+npm run check
+
+# Apenas linting
+npm run lint
+
+# Apenas verificação de tipos
+npm run type-check
+```
+
+## 📁 Estrutura do Projeto
+
+```
+src/
+├── components/          # Componentes React
+│   ├── ui/             # Componentes base do shadcn/ui
+│   ├── CategorySection.tsx
+│   ├── Header.tsx
+│   ├── LinkCard.tsx
+│   └── SearchBar.tsx
+├── data/               # Dados da aplicação
+│   └── portal-links.ts # Configuração de links e categorias
+├── hooks/              # Hooks customizados
+│   ├── useSearch.ts    # Hook de busca inteligente
+│   └── useTheme.ts     # Hook de tema
+├── lib/                # Utilitários
+│   └── utils.ts
+└── App.tsx             # Componente principal
+```
+
+## ⚙️ Configuração de Links
+
+Os links são configurados no arquivo `src/data/portal-links.ts` com a seguinte estrutura:
+
+```typescript
+export const portalConfig = {
+  categoryKey: {
+    name: "Nome da Categoria",
+    description: "Descrição da categoria",
+    keywords: ["palavra1", "palavra2"], // Para busca
+    links: [
+      {
+        title: "Nome do Sistema",
+        description: "Descrição do sistema",
+        url: "https://sistema.barramansa.rj.gov.br",
+        icon: "IconName", // Ícone do Lucide React
+        keywords: ["Sistema"], // Para busca
+        isNew: false // Opcional: marca como novo
+      }
+    ]
+  }
+}
+```
+
+### Adicionando Novos Links
+1. Edite o arquivo `src/data/portal-links.ts`
+2. Adicione o link na categoria apropriada
+3. Inclua keywords relevantes para melhorar a busca
+4. Use ícones disponíveis no Lucide React
+
+## 🔍 Como Funciona a Busca
+
+O sistema de busca implementa um algoritmo fuzzy com pontuação baseada em prioridades:
+
+1. **Busca Exata**: Correspondência exata recebe pontuação máxima (100)
+2. **Começa Com**: Texto que inicia com o termo buscado (90 pontos)
+3. **Contém**: Texto que contém o termo buscado (70 pontos)
+4. **Busca Fuzzy**: Correspondência parcial de palavras (30 pontos por palavra)
+
+### Prioridades de Busca
+- **Links específicos** (600-400 pontos): Título > Descrição > Keywords
+- **Categorias** (300-100 pontos): Título > Descrição > Keywords
+
+Quando uma categoria corresponde à busca, todos os seus links são exibidos. Quando apenas links específicos correspondem, apenas esses links são mostrados.
+
+## 🎨 Personalização
+
+### Temas
+O portal suporta tema claro e escuro com persistência no localStorage. A alternância é feita através do botão no cabeçalho.
+
+### Cores e Estilos
+As cores são configuradas através do Tailwind CSS e podem ser personalizadas no arquivo `src/index.css`.
+
+## 📱 Responsividade
+
+O portal é totalmente responsivo e funciona em:
+- Desktop (1024px+)
+- Tablet (768px - 1023px)
+- Mobile (320px - 767px)
+
+## 🚀 Deploy
+
+O projeto pode ser deployado em qualquer serviço de hospedagem estática:
+
+```bash
+# Build para produção
+npm run build
+
+# Os arquivos estarão na pasta 'dist'
+```
+
+Serviços recomendados:
+- Vercel
+- Netlify
+- GitHub Pages
+- Firebase Hosting
+
+## 🤝 Contribuição
+
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/nova-funcionalidade`)
+3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
+4. Push para a branch (`git push origin feature/nova-funcionalidade`)
+5. Abra um Pull Request
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+
+## 📞 Suporte
+
+Para suporte técnico ou dúvidas sobre o portal, entre em contato com a equipe de TI da Prefeitura Municipal de Barra Mansa.
+
+---
+
+*Projeto desenvolvido com auxílio da IA da TRAE.*
+
+**Desenvolvido com ❤️ para a Prefeitura Municipal de Barra Mansa**
