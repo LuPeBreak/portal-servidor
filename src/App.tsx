@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { CategorySection } from "./components/CategorySection";
+import { FavoritesSection } from "./components/FavoritesSection";
 import { Header } from "./components/Header";
 import { SearchBar } from "./components/SearchBar";
 import { portalConfig } from "./data/portal-links";
@@ -48,6 +49,9 @@ function App() {
 					searchTerm={searchTerm}
 					onSearchChange={setSearchTerm}
 				/>
+
+				{/* Seção de Favoritos - aparece apenas quando não está buscando e há favoritos */}
+				{!isSearching && <FavoritesSection />}
 
 				{isSearching && (
 					<div className="mb-6 text-center">

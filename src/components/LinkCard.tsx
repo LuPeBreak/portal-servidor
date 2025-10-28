@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Globe } from "lucide-react";
+import { Globe, Star } from "lucide-react";
+import { useCallback } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -8,28 +9,58 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
-
 import type { Link } from "@/types";
+import { useFavorites } from "../hooks/useFavorites";
 
-interface LinkCardProps extends Link {}
+interface LinkCardProps {
+	link: Link;
+}
 
-export function LinkCard({
-	title,
-	description,
-	url,
-	icon: IconComponent = Globe,
-	isNew = false,
-}: LinkCardProps) {
-	const handleClick = () => {
+export function LinkCard({ link }: LinkCardProps) {
+	const { toggleFavorite, isFavorite } = useFavorites();
+	const {
+		id,
+		title,
+		description,
+		url,
+		icon: IconComponent = Globe,
+		isNew = false,
+	} = link;
+
+	const isLinkFavorite = isFavorite(id);
+
+	const handleClick = useCallback(() => {
 		window.open(url, "_blank", "noopener,noreferrer");
-	};
+	}, [url]);
 
-	const handleKeyDown = (event: React.KeyboardEvent) => {
-		if (event.key === "Enter" || event.key === " ") {
-			event.preventDefault();
-			handleClick();
-		}
-	};
+	const handleKeyDown = useCallback(
+		(event: React.KeyboardEvent) => {
+			if (event.key === "Enter" || event.key === " ") {
+				event.preventDefault();
+				handleClick();
+			}
+		},
+		[handleClick],
+	);
+
+	const handleFavoriteClick = useCallback(
+		(event: React.MouseEvent) => {
+			event.stopPropagation();
+			toggleFavorite(id);
+		},
+		[id, toggleFavorite],
+	);
+
+	const handleFavoriteKeyDown = useCallback(
+		(event: React.KeyboardEvent) => {
+			if (event.key === "Enter" || event.key === " ") {
+				event.preventDefault();
+				event.stopPropagation();
+				toggleFavorite(id);
+			}
+		},
+		[id, toggleFavorite],
+	);
 
 	return (
 		<TooltipProvider>
@@ -84,21 +115,51 @@ export function LinkCard({
 											</CardTitle>
 										</div>
 									</div>
-									{isNew && (
-										<motion.div
-											initial={{ scale: 0.8, opacity: 0 }}
-											animate={{ scale: 1, opacity: 1 }}
-											transition={{ delay: 0.2 }}
-											className="shrink-0"
+									<div className="flex items-center gap-2 shrink-0">
+										{/* Botão de Favorito */}
+										<motion.button
+											onClick={handleFavoriteClick}
+											onKeyDown={handleFavoriteKeyDown}
+											whileHover={{ scale: 1.1 }}
+											whileTap={{ scale: 0.9 }}
+											className={`
+												p-1.5 rounded-lg transition-all duration-200
+												hover:bg-yellow-500/10 focus:outline-none focus:ring-2 focus:ring-yellow-500/50
+												${
+													isLinkFavorite
+														? "text-yellow-500 hover:text-yellow-600"
+														: "text-gray-400 hover:text-yellow-500"
+												}
+											`}
+											aria-label={
+												isLinkFavorite
+													? `Remover ${title} dos favoritos`
+													: `Adicionar ${title} aos favoritos`
+											}
+											aria-pressed={isLinkFavorite}
+											tabIndex={0}
 										>
-											<Badge
-												variant="secondary"
-												className="text-xs px-2 py-1 bg-linear-to-r from-green-500/10 to-emerald-500/10 text-green-700 dark:text-green-300 border-green-500/20"
+											<Star
+												className={`h-4 w-4 transition-all duration-200 ${
+													isLinkFavorite ? "fill-current" : ""
+												}`}
+											/>
+										</motion.button>
+										{isNew && (
+											<motion.div
+												initial={{ scale: 0.8, opacity: 0 }}
+												animate={{ scale: 1, opacity: 1 }}
+												transition={{ delay: 0.2 }}
 											>
-												Novo
-											</Badge>
-										</motion.div>
-									)}
+												<Badge
+													variant="secondary"
+													className="text-xs px-2 py-1 bg-linear-to-r from-green-500/10 to-emerald-500/10 text-green-700 dark:text-green-300 border-green-500/20"
+												>
+													Novo
+												</Badge>
+											</motion.div>
+										)}
+									</div>
 								</div>
 							</CardHeader>
 							<CardContent className="pt-0 pb-4 relative z-10">

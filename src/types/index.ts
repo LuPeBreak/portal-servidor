@@ -1,4 +1,5 @@
 export interface Link {
+	id: string;
 	title: string;
 	description: string;
 	url: string;
@@ -24,4 +25,14 @@ export interface SearchResult {
 		| "link-keywords"
 		| "category-title"
 		| "category-description";
+}
+
+// Favorites Context Types
+export interface FavoritesContextType {
+	favorites: string[];
+	toggleFavorite: (id: string) => void;
+	isFavorite: (id: string) => boolean;
+	getFavoriteLinks: (allLinks: Link[]) => Link[];
+	clearFavorites: () => void;
+	cleanOrphanedFavorites: () => void;
 }

@@ -30,6 +30,7 @@ export const portalConfig = {
 		description: "Acesso aos principais sistemas administrativos da prefeitura",
 		links: [
 			{
+				id: "management-protocolo",
 				title: "Protocolo",
 				description: "Sistema de protocolo de documentos",
 				url: "https://www.gp.srv.br/protocolo_barramansa/servlet/login",
@@ -37,6 +38,7 @@ export const portalConfig = {
 				keywords: ["processo", "tramitação", "tramite"],
 			},
 			{
+				id: "management-administrativo",
 				title: "Administrativo",
 				description: "Gestão administrativa e processos",
 				url: "https://www.gp.srv.br/adm_barramansa/servlet/login",
@@ -50,6 +52,7 @@ export const portalConfig = {
 				],
 			},
 			{
+				id: "management-contabil",
 				title: "Contábil",
 				description: "Sistema de gestão contábil",
 				url: "https://www.gp.srv.br/contabil_barramansa/servlet/login_contabil",
@@ -64,6 +67,7 @@ export const portalConfig = {
 				],
 			},
 			{
+				id: "management-planejamento",
 				title: "Planejamento",
 				description: "Sistema de planejamento municipal",
 				url: "https://www.gp.srv.br/planejamento_barramansa",
@@ -71,6 +75,7 @@ export const portalConfig = {
 				keywords: ["projetos", "urbano"],
 			},
 			{
+				id: "management-rh",
 				title: "RH",
 				description: "Sistema de recursos humanos",
 				url: "https://www.gp.srv.br/rh_barramansa",
@@ -78,6 +83,7 @@ export const portalConfig = {
 				keywords: ["servidores"],
 			},
 			{
+				id: "management-central",
 				title: "Central",
 				description: "Gerenciamento de usuários",
 				url: "https://www.gp.srv.br/central_barramansa/servlet/login",
@@ -85,6 +91,7 @@ export const portalConfig = {
 				keywords: ["usuários", "usuarios", "acessos", "perfis", "login"],
 			},
 			{
+				id: "management-educacao",
 				title: "Educação",
 				description: "Sistema de gestão educacional",
 				url: "#",
@@ -100,6 +107,7 @@ export const portalConfig = {
 				],
 			},
 			{
+				id: "management-geo-barra-mansa",
 				title: "Geo Barra Mansa",
 				description: "Sistema de informações geográficas",
 				url: "https://arcgis.barramansa.rj.gov.br/portal/home",
@@ -115,6 +123,7 @@ export const portalConfig = {
 				],
 			},
 			{
+				id: "management-tributos",
 				title: "Tributos",
 				description: "Gestão tributária",
 				url: "https://gp.srv.br/tributario/barramansa",
@@ -128,6 +137,7 @@ export const portalConfig = {
 		description: "Ferramentas e recursos úteis para o dia a dia",
 		links: [
 			{
+				id: "utilities-webmail",
 				title: "WEBMAIL",
 				description: "Sistema de email da Prefeitura de Barra Mansa",
 				url: "https://webmail.barramansa.rj.gov.br/",
@@ -141,6 +151,7 @@ export const portalConfig = {
 				],
 			},
 			{
+				id: "utilities-portal-transparencia",
 				title: "Portal da Transparência",
 				description: "Informações públicas",
 				url: "https://portaltransparencia.barramansa.rj.gov.br/",
@@ -157,6 +168,7 @@ export const portalConfig = {
 				],
 			},
 			{
+				id: "utilities-site-barra-mansa",
 				title: "Site Barra Mansa",
 				description: "Informações públicas",
 				url: "https://portaltransparencia.barramansa.rj.gov.br/",
@@ -173,6 +185,7 @@ export const portalConfig = {
 				],
 			},
 			{
+				id: "utilities-contracheque-online",
 				title: "Contracheque Online",
 				description: "Consulta de contracheque online",
 				url: "https://www.gp.srv.br/portalservidor_barramansa/servlet/mlogin",
@@ -180,6 +193,7 @@ export const portalConfig = {
 				keywords: ["contracheque", "salário", "holerite", "servidor"],
 			},
 			{
+				id: "utilities-pedido-toner",
 				title: "Pedido de Toner",
 				description: "Formulário para solicitação de toner",
 				url: "https://forms.gle/burb8L5zBW11B3CBA",
@@ -187,6 +201,7 @@ export const portalConfig = {
 				keywords: ["impressora", "suprimentos", "toner", "solicitação"],
 			},
 			{
+				id: "utilities-painel-senhas",
 				title: "Painel de Senhas",
 				description: "Painel de senhas de atendimento do GAA",
 				url: "https://atendimentosmf.barramansa.rj.gov.br/novosga-1.5/public/login?_gl=1*1vu309g*_ga*MjA2NzYzMjk0OS4xNzYxMjQzMTc3*_ga_HQX8DJY8GM*czE3NjEyNDMxNzckbzEkZzEkdDE3NjEyNDUyMzIkajYkbDAkaDA.",
@@ -194,6 +209,7 @@ export const portalConfig = {
 				keywords: ["atendimento", "fila", "senhas", "GAA"],
 			},
 			{
+				id: "utilities-processo-eletronico",
 				title: "Processo Eletrônico",
 				description: "Sistema de processo eletrônico",
 				url: "http://www.gesconet.com.br/2.0/barramansa/gesconweb/#/login",
@@ -207,6 +223,7 @@ export const portalConfig = {
 				],
 			},
 			{
+				id: "utilities-bi",
 				title: "BI",
 				description: "Business Intelligence - Relatórios e análises",
 				url: "https://bi.forgov.com.br/",
@@ -221,6 +238,7 @@ export const portalConfig = {
 				],
 			},
 			{
+				id: "utilities-sistema-assinatura",
 				title: "Sistema de Assinatura",
 				description: "Sistema para assinatura digital",
 				url: "https://assinatura.barramansa.rj.gov.br",
@@ -234,6 +252,7 @@ export const portalConfig = {
 				],
 			},
 			{
+				id: "utilities-telefones-uteis",
 				title: "Telefones Úteis",
 				description: "Lista de telefones úteis da prefeitura",
 				url: "https://docs.google.com/spreadsheets/d/1YvICJ0MkKHLg9xbjBDIHFZM6zHa8vfQ9uNb3BGyDyZY/edit?usp=sharing",
@@ -247,6 +266,7 @@ export const portalConfig = {
 				],
 			},
 			{
+				id: "utilities-certificado-digital",
 				title: "Pedido de Certificado Digital",
 				description: "Solicitação de certificado digital",
 				url: "https://barramansa.rj.gov.br/portaldoservidor/pedido-de-certificado-digital/",
@@ -265,6 +285,7 @@ export const portalConfig = {
 		description: "Central de ajuda e suporte técnico",
 		links: [
 			{
+				id: "support-criacao-usuario",
 				title: "Criação de Usuário",
 				description:
 					"Solicitação de criação de usuário para Coplan e rede da prefeitura",
@@ -275,11 +296,15 @@ export const portalConfig = {
 					"acesso",
 					"rede interna",
 					"TI",
+					"usuario",
+					"criacao",
+					"criaçao",
 					"criação de conta",
 					"criar conta",
 				],
 			},
 			{
+				id: "support-criacao-email",
 				title: "Criação de Email",
 				description: "Solicitação de criação de email institucional",
 				url: "https://www.barramansa.rj.gov.br/criaco-de-e-mail",
@@ -293,6 +318,7 @@ export const portalConfig = {
 				],
 			},
 			{
+				id: "support-recuperacao-senha",
 				title: "Recuperação de Senha",
 				description: "Recuperação de senha da Coplan e da rede da prefeitura",
 				url: "https://barramansa.rj.gov.br/portaldoservidor/recuperacao-de-senhas/",
@@ -307,6 +333,7 @@ export const portalConfig = {
 				],
 			},
 			{
+				id: "support-troca-perfil",
 				title: "Troca de Perfil",
 				description: "Solicitação de troca de perfil no SGP",
 				url: "https://www.barramansa.rj.gov.br/solicitacao-de-troca-de-perfil",
@@ -318,6 +345,7 @@ export const portalConfig = {
 				],
 			},
 			{
+				id: "support-agendar-projetor",
 				title: "Agendar Projetor",
 				description: "Agendamento de projetor para eventos",
 				url: "https://www.barramansa.rj.gov.br/portaldoservidor/agendar-projetor",
@@ -331,6 +359,7 @@ export const portalConfig = {
 				],
 			},
 			{
+				id: "support-whatsapp-ti",
 				title: "WhatsApp TI",
 				description: "Contato direto via WhatsApp",
 				url: "https://api.whatsapp.com/send/?phone=5524981465782&text=Ol%C3%A1+Preciso+de+ajuda&type=phone_number&app_absent=0",
@@ -338,6 +367,7 @@ export const portalConfig = {
 				keywords: ["whatsapp", "suporte", "atendimento", "TI", "ajuda", "chat"],
 			},
 			{
+				id: "support-solicitar-acesso-pasta",
 				title: "Solicitar acesso a pasta",
 				description: "Solicitação de acesso a pastas compartilhadas",
 				url: "https://barramansa.rj.gov.br/portaldoservidor/pedido-de-acesso-a-pastas",
@@ -350,6 +380,7 @@ export const portalConfig = {
 				],
 			},
 			{
+				id: "support-anydesk",
 				title: "AnyDesk",
 				description: "Suporte remoto via AnyDesk",
 				url: "https://anydesk.com/pt/downloads",
