@@ -1,57 +1,55 @@
-import { Building2, Moon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 
 interface HeaderProps {
-	title: string;
-	subtitle: string;
 	isDarkMode: boolean;
 	onThemeToggle: () => void;
 }
 
-export function Header({
-	title,
-	subtitle,
-	isDarkMode,
-	onThemeToggle,
-}: HeaderProps) {
+export function Header({ isDarkMode, onThemeToggle }: HeaderProps) {
 	return (
-		<header className="relative w-full bg-linear-to-r from-background via-background/98 to-background border-b border-border/50 backdrop-blur-sm">
-			{/* Efeito de brilho sutil no fundo */}
-			<div className="absolute inset-0 bg-linear-to-r from-primary/5 via-transparent to-primary/5 opacity-50" />
+		<header className="relative bg-background/95 backdrop-blur-sm border-b border-border/50 shadow-sm h-24">
+			{/* Efeito de brilho sutil */}
+			<div className="absolute inset-0 bg-linear-to-r from-primary/5 via-transparent to-primary/5" />
 
-			<div className="relative container mx-auto px-4 py-6 md:py-8">
-				<div className="flex items-center justify-between gap-4">
-					{/* Área da Logo + Título */}
-					<div className="flex items-center space-x-4 md:space-x-6 flex-1 min-w-0">
-						{/* Placeholder para Logo Futura */}
+			{/* Container principal */}
+			<div className="relative z-10 h-full">
+				<div className="container mx-auto px-4 h-full flex items-center justify-between">
+					{/* Logo e título */}
+					<div className="flex items-center gap-4">
 						<div className="shrink-0">
-							<div className="w-12 h-12 md:w-16 md:h-16 bg-linear-to-br from-primary/20 via-primary/10 to-primary/5 rounded-xl border border-primary/20 flex items-center justify-center group hover:from-primary/30 hover:via-primary/15 hover:to-primary/8 transition-all duration-300">
-								<Building2 className="w-6 h-6 md:w-8 md:h-8 text-primary/70 group-hover:text-primary transition-colors" />
-							</div>
-						</div>
-
-						{/* Área de Título e Subtítulo */}
-						<div className="flex flex-col space-y-1 md:space-y-2 flex-1 min-w-0">
-							<h1 className="text-xl md:text-3xl lg:text-4xl font-bold bg-linear-to-r from-foreground via-foreground/95 to-foreground/90 bg-clip-text text-transparent leading-tight">
-								{title}
-							</h1>
-							<p className="text-sm md:text-lg text-muted-foreground/80 font-medium leading-relaxed">
-								{subtitle}
-							</p>
+							<img
+								src={isDarkMode ? "/logo-portal-dark.png" : "/logo-portal.png"}
+								alt="Portal do Servidor - Prefeitura Municipal de Barra Mansa"
+								className="w-32 h-32 md:w-40 md:h-40 lg:w-56 lg:h-56 object-contain transition-all duration-300 hover:scale-105"
+							/>
 						</div>
 					</div>
 
-					{/* Controle de Tema */}
-					<div className="shrink-0">
-						<div className="flex items-center space-x-2 md:space-x-3 bg-background/50 backdrop-blur-sm border border-border/50 rounded-full px-3 py-2 md:px-4 md:py-2.5 hover:bg-background/70 hover:border-border/70 transition-all duration-300 group">
-							<Sun className="h-4 w-4 md:h-5 md:w-5 text-amber-500 group-hover:text-amber-400 transition-colors" />
+					<div className="flex items-center gap-4">
+						{/* AMO BM */}
+						<div className="shrink-0">
+							<img
+								src={isDarkMode ? "/amo-bm-dark.png" : "/amo-bm.png"}
+								alt="AMO BM"
+								className="w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain transition-all duration-300 hover:scale-105"
+							/>
+						</div>
+
+						{/* Theme Switcher */}
+						<div className="flex items-center space-x-2 md:space-x-3 bg-card/80 backdrop-blur-sm border border-border rounded-xl px-3 py-2 md:px-4 md:py-3 hover:bg-card hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 group">
+							<Sun
+								className={`h-4 w-4 md:h-5 md:w-5 transition-all duration-300 ${!isDarkMode ? "text-primary scale-110" : "text-muted-foreground scale-100"}`}
+							/>
 							<Switch
 								checked={isDarkMode}
 								onCheckedChange={onThemeToggle}
-								aria-label="Alternar tema escuro/claro"
-								className="data-[state=checked]:bg-slate-600 data-[state=unchecked]:bg-amber-200"
+								aria-label={`Alternar para tema ${isDarkMode ? "claro" : "escuro"}`}
+								className="data-[state=checked]:bg-primary data-[state=unchecked]:bg-primary/20 border-2 data-[state=checked]:border-primary data-[state=unchecked]:border-primary/30"
 							/>
-							<Moon className="h-4 w-4 md:h-5 md:w-5 text-slate-400 group-hover:text-slate-300 transition-colors" />
+							<Moon
+								className={`h-4 w-4 md:h-5 md:w-5 transition-all duration-300 ${isDarkMode ? "text-primary scale-110" : "text-muted-foreground scale-100"}`}
+							/>
 						</div>
 					</div>
 				</div>

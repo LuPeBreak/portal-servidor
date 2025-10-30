@@ -1,12 +1,13 @@
 import { useEffect, useRef } from "react";
 import { CategorySection } from "./components/CategorySection";
 import { FavoritesSection } from "./components/FavoritesSection";
+import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { SearchBar } from "./components/SearchBar";
 import { portalConfig } from "./data/portal-links";
-import { siteConfig } from "./data/site-config";
 import { useSearch } from "./hooks/useSearch";
 import { useTheme } from "./hooks/useTheme";
+import { formatSearchMessage } from "./utils/text";
 
 function App() {
 	const { isDarkMode, toggleTheme } = useTheme();
@@ -36,12 +37,7 @@ function App() {
 
 	return (
 		<div className="min-h-screen bg-background flex flex-col">
-			<Header
-				title={siteConfig.title}
-				subtitle={siteConfig.subtitle}
-				isDarkMode={isDarkMode}
-				onThemeToggle={toggleTheme}
-			/>
+			<Header isDarkMode={isDarkMode} onThemeToggle={toggleTheme} />
 
 			<main className="container mx-auto px-4 py-6 md:py-8 flex-1">
 				<SearchBar
@@ -56,9 +52,7 @@ function App() {
 				{isSearching && (
 					<div className="mb-6 text-center">
 						<p className="text-muted-foreground text-sm md:text-base">
-							{hasResults
-								? `${totalResults} resultado${totalResults !== 1 ? "s" : ""} encontrado${totalResults !== 1 ? "s" : ""} para "${searchTerm}"`
-								: `Nenhum resultado encontrado para "${searchTerm}"`}
+							{formatSearchMessage(totalResults, searchTerm, hasResults)}
 						</p>
 					</div>
 				)}
@@ -97,20 +91,7 @@ function App() {
 				)}
 			</main>
 
-			<footer className="bg-muted/30 border-t border-border mt-auto">
-				<div className="container mx-auto px-4 py-4 md:py-6">
-					<div className="text-center text-xs md:text-sm text-muted-foreground">
-						<p>
-							© 2024 Prefeitura Municipal de Barra Mansa - Todos os direitos
-							reservados
-						</p>
-						<p className="mt-1">
-							Portal desenvolvido para facilitar o acesso aos sistemas
-							municipais
-						</p>
-					</div>
-				</div>
-			</footer>
+			<Footer isDarkMode={isDarkMode} />
 		</div>
 	);
 }

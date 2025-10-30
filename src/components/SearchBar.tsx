@@ -63,14 +63,17 @@ export const SearchBar = forwardRef<SearchBarRef, SearchBarProps>(
 					transition={{ duration: 0.6, ease: "easeOut" }}
 					className="relative group"
 				>
-					{/* Background com gradiente e glow effect */}
-					<div className="absolute inset-0 bg-linear-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+					{/* Background com gradiente e glow effect - HOVER SUTIL */}
+					<div className="absolute inset-0 bg-linear-to-r from-blue-500/10 via-purple-500/12 to-pink-500/10 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-all duration-300" />
+
+					{/* Efeito de hover sutil adicional */}
+					<div className="searchbar-hover-effect absolute inset-0 bg-linear-to-r from-blue-500/8 via-purple-500/10 to-pink-500/8 rounded-2xl blur-sm opacity-0 transition-all duration-300 pointer-events-none" />
 
 					{/* Container principal */}
 					<div
 						className={`
 					relative bg-linear-to-r from-background via-background/95 to-background
-					backdrop-blur-sm border-2 rounded-2xl transition-all duration-300 ease-out
+					backdrop-blur-sm border-2 rounded-2xl transition-all duration-300 ease-out z-20
 					${
 						isFocused
 							? "border-primary/50 shadow-2xl shadow-primary/25 bg-background/98"
@@ -161,22 +164,6 @@ export const SearchBar = forwardRef<SearchBarRef, SearchBarProps>(
 
 					{/* Efeito de brilho no hover */}
 					<div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" />
-				</motion.div>
-
-				{/* Dicas de atalhos */}
-				<motion.div
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					transition={{ delay: 0.8, duration: 0.4 }}
-					className="mt-4 text-center"
-				>
-					<p className="text-xs text-muted-foreground/60">
-						💡 Dica: Use{" "}
-						<kbd className="px-1.5 py-0.5 bg-muted/50 rounded text-xs">
-							Ctrl+K
-						</kbd>{" "}
-						para focar na busca
-					</p>
 				</motion.div>
 			</div>
 		);

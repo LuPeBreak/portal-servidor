@@ -35,7 +35,7 @@ export const portalConfig = {
 				description: "Sistema de protocolo de documentos",
 				url: "https://www.gp.srv.br/protocolo_barramansa/servlet/login",
 				icon: FileText,
-				keywords: ["processo", "tramitação", "tramite"],
+				keywords: ["processo", "tramitação", "tramite", "coplan"],
 			},
 			{
 				id: "management-administrativo",
@@ -49,6 +49,7 @@ export const portalConfig = {
 					"almoxarifado",
 					"patrimonio",
 					"NAD",
+					"coplan",
 				],
 			},
 			{
@@ -64,6 +65,7 @@ export const portalConfig = {
 					"orçamento",
 					"despesas",
 					"receitas",
+					"coplan",
 				],
 			},
 			{
@@ -72,7 +74,7 @@ export const portalConfig = {
 				description: "Sistema de planejamento municipal",
 				url: "https://www.gp.srv.br/planejamento_barramansa",
 				icon: ClipboardList,
-				keywords: ["projetos", "urbano"],
+				keywords: ["projetos", "urbano", "coplan"],
 			},
 			{
 				id: "management-rh",
@@ -80,7 +82,7 @@ export const portalConfig = {
 				description: "Sistema de recursos humanos",
 				url: "https://www.gp.srv.br/rh_barramansa",
 				icon: Users,
-				keywords: ["servidores"],
+				keywords: ["servidores", "coplan"],
 			},
 			{
 				id: "management-central",
@@ -88,7 +90,29 @@ export const portalConfig = {
 				description: "Gerenciamento de usuários",
 				url: "https://www.gp.srv.br/central_barramansa/servlet/login",
 				icon: Building2,
-				keywords: ["usuários", "usuarios", "acessos", "perfis", "login"],
+				keywords: [
+					"usuários",
+					"usuarios",
+					"acessos",
+					"perfis",
+					"login",
+					"coplan",
+				],
+			},
+			{
+				id: "management-tributos",
+				title: "Tributos",
+				description: "Gestão tributária",
+				url: "https://gp.srv.br/tributario/barramansa",
+				icon: CreditCard,
+				keywords: [
+					"tributos",
+					"iptu",
+					"iss",
+					"taxas",
+					"impostos municipais",
+					"coplan",
+				],
 			},
 			{
 				id: "management-educacao",
@@ -121,14 +145,6 @@ export const portalConfig = {
 					"geolocalização",
 					"geolocalizacao",
 				],
-			},
-			{
-				id: "management-tributos",
-				title: "Tributos",
-				description: "Gestão tributária",
-				url: "https://gp.srv.br/tributario/barramansa",
-				icon: CreditCard,
-				keywords: ["tributos", "iptu", "iss", "taxas", "impostos municipais"],
 			},
 		],
 	},

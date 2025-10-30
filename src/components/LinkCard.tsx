@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Globe, Star } from "lucide-react";
-import { useCallback } from "react";
+import { memo, useCallback } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -16,7 +16,7 @@ interface LinkCardProps {
 	link: Link;
 }
 
-export function LinkCard({ link }: LinkCardProps) {
+export const LinkCard = memo(function LinkCard({ link }: LinkCardProps) {
 	const { toggleFavorite, isFavorite } = useFavorites();
 	const {
 		id,
@@ -77,13 +77,12 @@ export function LinkCard({ link }: LinkCardProps) {
 						<Card
 							className={`
 								group cursor-pointer h-full relative overflow-hidden
-								bg-linear-to-br from-background via-background/95 to-background/90
-								backdrop-blur-sm border border-border/50
+								bg-card border-2 border-border/60 shadow-md shadow-primary/5
 								transition-all duration-300 ease-out
-								hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10
-								focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2
+								hover:border-primary/50 hover:shadow-xl hover:shadow-primary/15 hover:-translate-y-1
+								focus-within:ring-2 focus-within:ring-primary/50 focus-within:ring-offset-2 focus-within:ring-offset-background
 								before:absolute before:inset-0 before:bg-linear-to-br 
-								before:from-primary/5 before:via-transparent before:to-secondary/5
+								before:from-primary/8 before:via-transparent before:to-primary/4
 								before:opacity-0 before:transition-opacity before:duration-300
 								hover:before:opacity-100
 							`}
@@ -94,7 +93,7 @@ export function LinkCard({ link }: LinkCardProps) {
 							aria-label={`Abrir ${title} em nova aba`}
 						>
 							{/* Efeito de brilho no hover */}
-							<div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+							<div className="absolute inset-0 bg-linear-to-r from-transparent via-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
 							<CardHeader className="pb-3 relative z-10">
 								<div className="flex items-start justify-between">
@@ -110,7 +109,7 @@ export function LinkCard({ link }: LinkCardProps) {
 											<IconComponent className="h-5 w-5 text-primary group-hover:text-primary/90 transition-colors" />
 										</motion.div>
 										<div className="flex-1 min-w-0">
-											<CardTitle className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-2 leading-tight">
+											<CardTitle className="text-sm font-semibold text-card-foreground group-hover:text-primary transition-colors duration-300 line-clamp-2 leading-tight">
 												{title}
 											</CardTitle>
 										</div>
@@ -124,11 +123,11 @@ export function LinkCard({ link }: LinkCardProps) {
 											whileTap={{ scale: 0.9 }}
 											className={`
 												p-1.5 rounded-lg transition-all duration-200
-												hover:bg-yellow-500/10 focus:outline-none focus:ring-2 focus:ring-yellow-500/50
+												hover:bg-accent focus:outline-none focus:ring-2 focus:ring-ring
 												${
 													isLinkFavorite
 														? "text-yellow-500 hover:text-yellow-600"
-														: "text-gray-400 hover:text-yellow-500"
+														: "text-muted-foreground hover:text-yellow-500"
 												}
 											`}
 											aria-label={
@@ -153,7 +152,7 @@ export function LinkCard({ link }: LinkCardProps) {
 											>
 												<Badge
 													variant="secondary"
-													className="text-xs px-2 py-1 bg-linear-to-r from-green-500/10 to-emerald-500/10 text-green-700 dark:text-green-300 border-green-500/20"
+													className="text-xs px-2 py-1 bg-accent text-accent-foreground border-border"
 												>
 													Novo
 												</Badge>
@@ -179,4 +178,4 @@ export function LinkCard({ link }: LinkCardProps) {
 			</Tooltip>
 		</TooltipProvider>
 	);
-}
+})
