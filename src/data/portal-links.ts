@@ -171,7 +171,7 @@ export const portalConfig = {
 				id: "utilities-site-barra-mansa",
 				title: "Site Barra Mansa",
 				description: "Informações públicas",
-				url: "https://portaltransparencia.barramansa.rj.gov.br/",
+				url: "https://barramansa.rj.gov.br/",
 				icon: Globe,
 				keywords: [
 					"site oficial",
@@ -241,7 +241,7 @@ export const portalConfig = {
 				id: "utilities-sistema-assinatura",
 				title: "Sistema de Assinatura",
 				description: "Sistema para assinatura digital",
-				url: "https://assinatura.barramansa.rj.gov.br",
+				url: "https://secure.d4sign.com.br/login.html?r=/",
 				icon: PenTool,
 				keywords: [
 					"assinatura digital",
