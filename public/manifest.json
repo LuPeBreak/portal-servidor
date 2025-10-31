@@ -1,0 +1,105 @@
+{
+  "name": "Portal do Servidor - Prefeitura de Barra Mansa",
+  "short_name": "Portal do Servidor",
+  "description": "Portal do Servidor da Prefeitura Municipal de Barra Mansa. Acesso centralizado aos sistemas de gestão pública, webmail, protocolo, contracheque online, COPLAN e demais serviços essenciais para servidores municipais.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "categories": ["government", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo-portal.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo-portal.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo-portal.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/logo-portal.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/logo-portal.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Portal do Servidor - Tela Principal"
+    },
+    {
+      "src": "/logo-portal.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Portal do Servidor - Versão Mobile"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "COPLAN",
+      "short_name": "COPLAN",
+      "description": "Acesso direto ao sistema COPLAN",
+      "url": "https://www.gp.srv.br/planejamento_barramansa",
+      "icons": [
+        {
+          "src": "/logo.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Webmail",
+      "short_name": "Email",
+      "description": "Acesso direto ao webmail",
+      "url": "https://webmail.barramansa.rj.gov.br/",
+      "icons": [
+        {
+          "src": "/logo.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Contracheque",
+      "short_name": "Contracheque",
+      "description": "Consulta de contracheque online",
+      "url": "https://www.gp.srv.br/portalservidor_barramansa/servlet/mlogin",
+      "icons": [
+        {
+          "src": "/logo.svg",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  }
+}

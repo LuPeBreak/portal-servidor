@@ -2,12 +2,14 @@ import type { Link } from "@/types";
 import { LinkCard } from "./LinkCard";
 
 interface CategorySectionProps {
+	id?: string;
 	name: string;
 	description: string;
 	links: Link[];
 }
 
 export function CategorySection({
+	id,
 	name,
 	description,
 	links,
@@ -17,16 +19,10 @@ export function CategorySection({
 	}
 
 	return (
-		<section
-			className="space-y-6"
-			aria-labelledby={`category-${name.replace(/\s+/g, "-").toLowerCase()}`}
-		>
+		<section id={id} className="space-y-6" aria-label={name}>
 			{/* Header da seção */}
 			<div className="space-y-2">
-				<h2
-					id={`category-${name.replace(/\s+/g, "-").toLowerCase()}`}
-					className="text-2xl font-bold text-foreground tracking-tight"
-				>
+				<h2 className="text-2xl font-bold text-foreground tracking-tight">
 					{name}
 				</h2>
 				<p className="text-muted-foreground leading-relaxed max-w-3xl">

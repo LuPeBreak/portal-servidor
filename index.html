@@ -2,12 +2,116 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/logo.svg" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="alternate icon" type="image/png" href="/logo-portal.png" />
+    
+    <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portal do Servidor - Prefeitura Municipal de Barra Mansa. Acesso rápido aos sistemas de gestão pública, serviços e utilidades para servidores municipais." />
-    <meta name="keywords" content="portal servidor, prefeitura barra mansa, sistemas públicos, gestão municipal, coplan, webmail, protocolo" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Portal do Servidor da Prefeitura Municipal de Barra Mansa. Acesso centralizado aos sistemas de gestão pública, webmail, protocolo, contracheque online, COPLAN e demais serviços essenciais para servidores municipais." />
+    <meta name="keywords" content="portal servidor, prefeitura barra mansa, sistemas públicos, gestão municipal, coplan, webmail, protocolo, contracheque online, servidor público, barra mansa, rj, rio de janeiro, prefeitura municipal" />
     <meta name="author" content="Prefeitura Municipal de Barra Mansa" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="pt-BR" />
+    <meta name="revisit-after" content="7 days" />
+    <link rel="canonical" href="https://portaldoservidor.barramansa.rj.gov.br/" />
+    
+    <!-- Theme -->
     <meta name="theme-color" content="#2563eb" />
+    <meta name="msapplication-TileColor" content="#2563eb" />
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Portal do Servidor - Prefeitura de Barra Mansa" />
+    <meta property="og:title" content="Portal do Servidor - Prefeitura de Barra Mansa" />
+    <meta property="og:description" content="Portal do Servidor da Prefeitura Municipal de Barra Mansa. Acesso centralizado aos sistemas de gestão pública, webmail, protocolo, contracheque online, COPLAN e demais serviços essenciais para servidores municipais." />
+    <meta property="og:url" content="https://portaldoservidor.barramansa.rj.gov.br/" />
+    <meta property="og:image" content="https://portaldoservidor.barramansa.rj.gov.br/logo.svg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Logo do Portal do Servidor - Prefeitura de Barra Mansa" />
+    <meta property="og:locale" content="pt_BR" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Portal do Servidor - Prefeitura de Barra Mansa" />
+    <meta name="twitter:description" content="Portal do Servidor da Prefeitura Municipal de Barra Mansa. Acesso centralizado aos sistemas de gestão pública, webmail, protocolo, contracheque online, COPLAN e demais serviços essenciais para servidores municipais." />
+    <meta name="twitter:image" content="https://portaldoservidor.barramansa.rj.gov.br/logo.svg" />
+    <meta name="twitter:image:alt" content="Logo do Portal do Servidor - Prefeitura de Barra Mansa" />
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "GovernmentOrganization",
+          "@id": "https://portaldoservidor.barramansa.rj.gov.br/",
+          "name": "Prefeitura Municipal de Barra Mansa",
+          "alternateName": "Prefeitura de Barra Mansa",
+          "url": "https://www.barramansa.rj.gov.br/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://portaldoservidor.barramansa.rj.gov.br/logo.svg",
+            "width": 400,
+            "height": 400
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Barra Mansa",
+            "addressRegion": "RJ",
+            "addressCountry": "BR"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Barra Mansa",
+            "addressRegion": "Rio de Janeiro",
+            "addressCountry": "Brasil"
+          }
+        },
+        {
+					"@type": "WebSite",
+					"@id": "https://portaldoservidor.barramansa.rj.gov.br/",
+					"url": "https://portaldoservidor.barramansa.rj.gov.br/",
+          "name": "Portal do Servidor - Prefeitura de Barra Mansa",
+          "description": "Portal do Servidor da Prefeitura Municipal de Barra Mansa. Acesso centralizado aos sistemas de gestão pública, webmail, protocolo, contracheque online, COPLAN e demais serviços essenciais para servidores municipais.",
+          "publisher": {
+            "@id": "https://portaldoservidor.barramansa.rj.gov.br/"
+          },
+          "inLanguage": "pt-BR",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://portaldoservidor.barramansa.rj.gov.br/?search={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://portaldoservidor.barramansa.rj.gov.br/#webpage",
+          "url": "https://portaldoservidor.barramansa.rj.gov.br/",
+          "name": "Portal do Servidor - Prefeitura de Barra Mansa",
+          "isPartOf": {
+            "@id": "https://portaldoservidor.barramansa.rj.gov.br/"
+          },
+          "about": {
+            "@id": "https://portaldoservidor.barramansa.rj.gov.br/"
+          },
+          "description": "Portal do Servidor da Prefeitura Municipal de Barra Mansa. Acesso centralizado aos sistemas de gestão pública, webmail, protocolo, contracheque online, COPLAN e demais serviços essenciais para servidores municipais.",
+          "inLanguage": "pt-BR"
+        }
+      ]
+    }
+    </script>
+    
     <title>Portal do Servidor - Prefeitura de Barra Mansa</title>
   </head>
   <body>

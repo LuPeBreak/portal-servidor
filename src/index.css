@@ -173,3 +173,13 @@
 .group:hover .searchbar-hover-effect {
 	opacity: 1 !important;
 }
+
+/* Scroll suave para navegação por âncoras */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Offset para navegação por âncoras (compensa header fixo se houver) */
+section[id] {
+	scroll-margin-top: 2rem;
+}

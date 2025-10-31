@@ -82,6 +82,7 @@ function App() {
 						{Object.entries(portalConfig).map(([key, category]) => (
 							<CategorySection
 								key={key}
+								id={key}
 								name={category.name}
 								description={category.description}
 								links={category.links}

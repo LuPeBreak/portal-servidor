@@ -90,10 +90,14 @@ export const LinkCard = memo(function LinkCard({ link }: LinkCardProps) {
 							onKeyDown={handleKeyDown}
 							tabIndex={0}
 							role="button"
-							aria-label={`Abrir ${title} em nova aba`}
+							aria-label={`Abrir ${title} - ${description} em nova aba`}
+							aria-describedby={`card-description-${id}`}
 						>
 							{/* Efeito de brilho no hover */}
-							<div className="absolute inset-0 bg-linear-to-r from-transparent via-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+							<div
+								className="absolute inset-0 bg-linear-to-r from-transparent via-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+								aria-hidden="true"
+							/>
 
 							<CardHeader className="pb-3 relative z-10">
 								<div className="flex items-start justify-between">
@@ -105,11 +109,12 @@ export const LinkCard = memo(function LinkCard({ link }: LinkCardProps) {
 												rotate: [0, -10, 10, 0],
 												transition: { duration: 0.5 },
 											}}
+											aria-hidden="true"
 										>
 											<IconComponent className="h-5 w-5 text-primary group-hover:text-primary/90 transition-colors" />
 										</motion.div>
 										<div className="flex-1 min-w-0">
-											<CardTitle className="text-sm font-semibold text-card-foreground group-hover:text-primary transition-colors duration-300 line-clamp-2 leading-tight">
+											<CardTitle className="text-sm font-semibold text-card-foreground transition-colors duration-300 line-clamp-2 leading-tight">
 												{title}
 											</CardTitle>
 										</div>
@@ -123,7 +128,7 @@ export const LinkCard = memo(function LinkCard({ link }: LinkCardProps) {
 											whileTap={{ scale: 0.9 }}
 											className={`
 												p-1.5 rounded-lg transition-all duration-200
-												hover:bg-accent focus:outline-none focus:ring-2 focus:ring-ring
+												hover:bg-accent focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1
 												${
 													isLinkFavorite
 														? "text-yellow-500 hover:text-yellow-600"
@@ -137,6 +142,11 @@ export const LinkCard = memo(function LinkCard({ link }: LinkCardProps) {
 											}
 											aria-pressed={isLinkFavorite}
 											tabIndex={0}
+											title={
+												isLinkFavorite
+													? `Remover ${title} dos favoritos`
+													: `Adicionar ${title} aos favoritos`
+											}
 										>
 											<Star
 												className={`h-4 w-4 transition-all duration-200 ${
@@ -153,6 +163,7 @@ export const LinkCard = memo(function LinkCard({ link }: LinkCardProps) {
 												<Badge
 													variant="secondary"
 													className="text-xs px-2 py-1 bg-accent text-accent-foreground border-border"
+													aria-label="Item novo"
 												>
 													Novo
 												</Badge>
@@ -162,13 +173,19 @@ export const LinkCard = memo(function LinkCard({ link }: LinkCardProps) {
 								</div>
 							</CardHeader>
 							<CardContent className="pt-0 pb-4 relative z-10">
-								<p className="text-xs text-muted-foreground leading-relaxed line-clamp-3 group-hover:text-muted-foreground/80 transition-colors">
+								<p
+									id={`card-description-${id}`}
+									className="text-xs text-muted-foreground leading-relaxed line-clamp-3 group-hover:text-muted-foreground/80 transition-colors"
+								>
 									{description}
 								</p>
 							</CardContent>
 
 							{/* Indicador de hover sutil */}
-							<div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-primary/50 via-secondary/50 to-primary/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+							<div
+								className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-primary/50 via-secondary/50 to-primary/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+								aria-hidden="true"
+							/>
 						</Card>
 					</motion.div>
 				</TooltipTrigger>
@@ -178,4 +195,4 @@ export const LinkCard = memo(function LinkCard({ link }: LinkCardProps) {
 			</Tooltip>
 		</TooltipProvider>
 	);
-})
+});

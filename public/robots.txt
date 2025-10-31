@@ -1,0 +1,34 @@
+# Portal do Servidor - Prefeitura de Barra Mansa
+# Robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://portaldoservidor.barramansa.rj.gov.br/sitemap.xml
+
+# Crawl-delay para evitar sobrecarga do servidor
+Crawl-delay: 1
+
+# Permitir acesso a recursos estáticos
+Allow: /assets/
+Allow: /logo.svg
+Allow: /logo-portal.png
+Allow: /logo-portal-dark.png
+Allow: /amo-bm.png
+Allow: /amo-bm-dark.png
+Allow: /manifest.json
+
+# Bloquear arquivos de desenvolvimento (se existirem)
+Disallow: /src/
+Disallow: /*.map$
+Disallow: /node_modules/
+Disallow: /dist/
+Disallow: /.git/
+Disallow: /.env
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /pnpm-lock.yaml
+Disallow: /tsconfig.json
+Disallow: /vite.config.ts
+Disallow: /biome.json
